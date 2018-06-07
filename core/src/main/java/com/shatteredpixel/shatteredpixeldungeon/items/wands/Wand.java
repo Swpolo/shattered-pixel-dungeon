@@ -273,6 +273,11 @@ public abstract class Wand extends Item {
 			if (curUser.heroClass == HeroClass.MAGE) levelKnown = true;
 			updateQuickslot();
 		}
+		if (isIdentified() && !cursed) {
+			int roll = Random.Int(1000);
+			int chance = -330 * level()  + 330;
+			if (roll > chance) upgrade();
+		}
 
 		curUser.spendAndNext( TIME_TO_ZAP );
 	}
