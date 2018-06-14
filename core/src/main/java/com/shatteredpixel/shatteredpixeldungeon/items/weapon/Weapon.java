@@ -98,7 +98,7 @@ abstract public class Weapon extends KindOfWeapon {
 		if (enchantment != null) {
 			damage = enchantment.proc( this, attacker, defender, damage );
 		}
-		
+
 		if (!levelKnown) {
 			if (--hitsToKnow <= 0) {
 				identify();
@@ -191,11 +191,11 @@ abstract public class Weapon extends KindOfWeapon {
 
 		if (enchant && (enchantment == null || enchantment.curse())){
 			enchant( Enchantment.random() );
-		} else if (!enchant && Random.Float() > Math.pow(0.9, level())){
+		} /*else if (!enchant && Random.Float() > Math.pow(0.9, level())){
 			enchant(null);
-		}
+		}*/
 		
-		cursed = false;
+		//cursed = false;
 		
 		return super.upgrade();
 	}

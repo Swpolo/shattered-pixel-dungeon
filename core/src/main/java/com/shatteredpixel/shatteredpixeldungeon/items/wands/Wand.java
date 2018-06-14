@@ -274,9 +274,9 @@ public abstract class Wand extends Item {
 			updateQuickslot();
 		}
 		if (isIdentified() && !cursed) {
-			int roll = Random.Int(1000);
-			int chance = -330 * level()  + 330;
-			if (roll > chance) upgrade();
+			int roll = Random.Int(5);
+			int wall = Random.Int((level() + 1) * 10);
+			if (roll > wall) upgrade();
 		}
 
 		curUser.spendAndNext( TIME_TO_ZAP );

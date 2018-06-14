@@ -339,11 +339,11 @@ public class Armor extends EquipableItem {
 
 		if (inscribe && (glyph == null || glyph.curse())){
 			inscribe( Glyph.random() );
-		} else if (!inscribe && Random.Float() > Math.pow(0.9, level())){
+		} /*else if (!inscribe && Random.Float() > Math.pow(0.9, level())){
 			inscribe(null);
-		}
+		}*/
 		
-		cursed = false;
+		//cursed = false;
 
 		if (seal != null && seal.level() == 0)
 			seal.upgrade();
@@ -364,7 +364,13 @@ public class Armor extends EquipableItem {
 				Badges.validateItemLevelAquired( this );
 			}
 		}
-		
+
+		if (isIdentified() && !cursed) {
+			int roll = Random.Int(5);
+			int wall = Random.Int((level() + 1) * 10);
+			if (roll > wall) upgrade();
+		}
+
 		return damage;
 	}
 

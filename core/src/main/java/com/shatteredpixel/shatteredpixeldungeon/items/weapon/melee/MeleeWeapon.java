@@ -60,7 +60,13 @@ public class MeleeWeapon extends Weapon {
 				damage += Random.IntRange( 0, exStr );
 			}
 		}
-		
+
+		if (isIdentified() && !cursed) {
+			int roll = Random.Int(5);
+			int wall = Random.Int((level() + 1) * 10);
+			if (roll > wall) upgrade();
+		}
+
 		return damage;
 	}
 	
